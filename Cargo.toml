@@ -1,0 +1,7 @@
+[package]
+name = "rustpi"
+version = "0.1.0"
+authors = ["Antonio-M. Corbi Bellot <antonio.corbi@ua.es>"]
+edition = "2018"
+
+[dependencies]
