@@ -19,14 +19,15 @@ fn print_stats(v: [u32;10], count: usize) {
 
 fn main() -> std::io::Result<()> {
     let fname = "/home/acorbi/projects/rustpi/data/pi-10million.txt";
+    let fname = "/home/acorbi/projects/rustpi/data/pi-1million.txt";
     let mut file = File::open(fname)?;
     let mut contents = String::new();
     file.read_to_string(&mut contents)?;
 
     // strip last char?
-    if fname == "/home/acorbi/projects/rustpi/data/pi-1million.txt" {
-        contents = contents[0..contents.len()-1].to_string();
-    }
+    // if fname == "/home/acorbi/projects/rustpi/data/pi-1million.txt" {
+    //     contents = contents[0..contents.len()-1].to_string();
+    // }
     println!("Contents length: {}", contents.len());
 
     let mut count = 0;
@@ -39,6 +40,8 @@ fn main() -> std::io::Result<()> {
             //    c
         })
         .collect();
+
+    println!("Numbers length: {}", numbers.len());
 
     //println!("count= {}", count);
     //println!("'7'*2 es = {}", '7'.to_digit(10).unwrap() * 2);
