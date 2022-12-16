@@ -1,8 +1,8 @@
 use std::fs::File;
 use std::io::prelude::*;
 
-fn compute_stats(v : &Vec<u32>) -> [u32;10]{
-    let mut st = [0u32; 10];
+fn compute_stats(v: &Vec<u32>) -> [u64; 10] {
+    let mut st = [0u64; 10];
 
     for x in v.iter() {
         st[*x as usize] += 1;
@@ -11,15 +11,16 @@ fn compute_stats(v : &Vec<u32>) -> [u32;10]{
     st
 }
 
-fn print_stats(v: [u32;10], count: usize) {
+fn print_stats(v: [u64; 10], count: usize) {
     for i in 0..v.len() {
-        println!("[{}]: {}%", i, (100*v[i]) as f64 / count as f64)
+        println!("[{}]: {}%", i, (100 * v[i]) as f64 / count as f64)
     }
 }
 
 fn main() -> std::io::Result<()> {
     let fname = "/home/acorbi/projects/rustpi/data/pi-10million.txt";
     let fname = "/home/acorbi/projects/rustpi/data/pi-1million.txt";
+    let fname = "/home/acorbi/projects/rustpi/data/pi-billion.txt";
     let mut file = File::open(fname)?;
     let mut contents = String::new();
     file.read_to_string(&mut contents)?;
@@ -31,9 +32,9 @@ fn main() -> std::io::Result<()> {
     println!("Contents length: {}", contents.len());
 
     let mut count = 0;
-    let numbers : Vec<u32> = contents
+    let numbers: Vec<u32> = contents
         .chars()
-        .map(|c|{
+        .map(|c| {
             count += 1;
             //print!("[{}]", c);
             c.to_digit(10).unwrap()
