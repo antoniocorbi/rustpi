@@ -2,6 +2,14 @@
 name = "rustpi"
 version = "0.1.0"
 authors = ["Antonio-M. Corbi Bellot <antonio.corbi@ua.es>"]
-edition = "2018"
+edition = "2021"
 
 [dependencies]
+
+[[bin]]
+name = "rustpi"
+path = "src/rustpi/main.rs"
+
+[[bin]]
+name = "cleanpi"
+path = "src/cleanpi/main.rs"
